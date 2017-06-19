@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 100%;
+}
+
+header, nav, main, footer, aside, section, article, a {
+    display: block;
+}
+
+.wrapper {
+
+    margin: 150px auto 0 auto;
+    width: 450px;
+    height: 200px;
+    border: 2px solid darkred;
+}
+
+audio {
+    border: 1px solid black;
+    margin: auto;
+    display: block;
+}
+
+p {
+    font-size: 25px;
+    color: #333333;
+}
+
