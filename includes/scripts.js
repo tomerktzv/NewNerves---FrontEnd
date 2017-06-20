@@ -47,6 +47,11 @@ $("document").ready(function() {
     }
 
     function getSongCover(str) {
+        if(str.indexOf(".mp3")>=0) {
+            $('img')[0].id="coverPic2";
+        }
+        else $('img')[0].id="coverPic";
+
         return (str.substring(str.indexOf('songs/') + 6, str.indexOf('.mp3')));
     }
 
@@ -69,7 +74,8 @@ $("document").ready(function() {
 
     function getPlaylist(_mixname) {
         $("select").remove();
-        $('#coverPic').attr('src', 'data/pictures/nocover.png');
+        var idName = ($('img')[0].id="coverPic");
+        $(`#${idName}`).attr('src', 'data/pictures/nocover.png');
         $.getJSON('https://new-nerves.herokuapp.com/getMixesByUserId/' + userId, function (data) {
             $.each(data, function (key, value) {
                 if (value.mixname === _mixname) {
@@ -94,7 +100,8 @@ $("document").ready(function() {
     });
 
     $('#playlists').on('change', 'select',  function () {
-        $('#coverPic').attr('src', 'data/pictures/' + getSongCover($(this).val()) + '.jpg');
+        var idName = $('img')[0].id;
+        $(`#${idName}`).attr('src', 'data/pictures/' + getSongCover($(this).val()) + '.jpg');
         createNewAudio($(this).val());
     })
 });
