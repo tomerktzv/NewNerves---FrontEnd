@@ -13,7 +13,6 @@ header, nav, main, footer, aside, section, article, a {
 }
 
 .wrapper {
-
     margin: 150px auto 0 auto;
     width: 450px;
     height: 200px;
@@ -22,7 +21,7 @@ header, nav, main, footer, aside, section, article, a {
 
 body {
     color: #ffffff;
-    background: url('../images/bg.jpg');
+    background: url('../images/bg2.png') no-repeat;
     background-size: cover;
 }
 
