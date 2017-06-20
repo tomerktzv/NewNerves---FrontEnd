@@ -23,6 +23,22 @@ body {
     color: #ffffff;
     background: url('../images/bg2.png') no-repeat;
     background-size: cover;
+    padding: 5px;
+}
+
+h3 {
+    border-radius: 10px;
+    margin-right: 8px;
+    border: 1px solid #ffffff;
+    text-align: center;
+    min-width: 200px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+h3:hover {
+    background: #ffffff;
+    color: #333333;
 }
 
 audio {
@@ -36,10 +52,16 @@ p {
     color: #333333;
 }
 
+h1, h3 {
+    font-family: 'Frijole', cursive;
+}
+
 select {
     color: #333333;
     width: 500px;
+    display: block;
     font-size: 15px;
+    margin-bottom: 5px;
 }
 
 button > span {
@@ -60,7 +82,7 @@ button {
     text-align: center;
 }
 
-#login_form{
+#login_form {
     padding: 5% 5%;
     width:25%;
     position: relative;
@@ -71,27 +93,47 @@ button {
     background: rgba(255,255,255,0.4);
 }
 
-#login_form h2{
+#login_form h2 {
     position: absolute;
     top:-9%;
     left:0%;
     color: lightcoral;
 }
 
-#login_form label{
+#login_form label {
     display: block;
     float: left;
     width:250px;
     margin-right: 5%;
 }
-#login_form input{
+#login_form input {
     width:25%;
 }
-input[type=submit]{
+input[type=submit] {
     margin:5% 40%;
     width:50px;
     height: 30px;
     font-size: 105%;
     border-radius: 5px;
     display: block;
+}
+
+#hashtags {
+    font-size: 25px;
+    font-family: 'Permanent Marker', cursive;
+    color: lightcyan;
+    margin-left: 10px;
+}
+
+#hashtags li {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+#playlists {
+    margin-left: 10px;
+}
+
+#status {
+    color: red;
 }

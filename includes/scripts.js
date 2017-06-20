@@ -16,8 +16,9 @@ $("document").ready(function() {
 
         audioElement.addEventListener("canplay",function() {
             $("#length").text("Duration:" + audioElement.duration + " seconds");
-            $("#source").text("Source:" + audioElement.src);
-            // $("#status").text("Status: Ready to play").css("color","green");
+            var fullname = audioElement.src;
+            fullname = fullname.replace(/%20/g, ' ');
+            $("#source").text("Source:" + fullname);
         });
 
         audioElement.addEventListener("timeupdate", function() {
@@ -46,34 +47,54 @@ $("document").ready(function() {
     }
 
     function getSongCover(str) {
-        var newStr = str.substring(str.indexOf('songs/') + 6, str.indexOf('.mp3'));
         return (str.substring(str.indexOf('songs/') + 6, str.indexOf('.mp3')));
     }
 
-    function getSongs(arr) {
+    function getSongs(arr, _mixid) {
         for (i = 0; i < arr.length; i++) {
             $.getJSON('https://new-nerves.herokuapp.com/getSongByID/' + arr[i], function (data) {
                 $.each(data, function (key, value) {
-                    $('#list').append('<option value="data/songs/' + value.id + '.' + value.title + '.mp3">' + value.artist + ' - ' + value.title + '</option>');
+                    $('#list' + _mixid).append('<option value="data/songs/' + value.id + '.' + value.title + '.mp3">' + value.artist + ' - ' + value.title + '</option>');
                 });
             });
         }
     }
 
+    function getHashTags(arr) {
+        $('#hashtags li').remove();
+        for (i = 0; i < arr.length; i++) {
+            $('#hashtags').append('<li> #' + arr[i] + '</li>');
+        }
+    }
+
+    function getPlaylist(_mixname) {
+        $("select").remove();
+        $('#coverPic').attr('src', 'data/pictures/nocover.png');
+        $.getJSON('https://new-nerves.herokuapp.com/getMixesByUserId/' + userId, function (data) {
+            $.each(data, function (key, value) {
+                if (value.mixname === _mixname) {
+                    $('#playlists').append('<select id=list' + value.mixid + '></select>');
+                    $('#list' + value.mixid).append('<option disabled selected> --- </option>');
+                    getHashTags(value.hashtags, value.mixid);
+                    getSongs(value.songs, value.mixid);
+                }
+            });
+        });
+    }
+
     $.getJSON('https://new-nerves.herokuapp.com/getMixesByUserId/' + userId, function (data) {
         $.each(data, function (key, value) {
-            getSongs(value.songs);
+            $('#playlists').append('<h3>' + value.mixname + '</h3>');
         });
     });
 
-    // $.getJSON('https://new-nerves.herokuapp.com/getAllSongs', function (data) {
-    //     $.each(data, function (key, value) {
-    //         $('#list').append('<option value="data/songs/' + value.id + '.' + value.title + '.mp3">' + value.artist + ' - ' + value.title + '</option>');
-    //     });
-    // });
+    $('#playlists').on('click', 'h3', function () {
+        console.log($(this).text());
+        getPlaylist($(this).text());
+    });
 
-    $('#list').on('change', function () {
-        $('#coverPic').attr('src', 'data/pictures/' + getSongCover($('#list').val()) + '.jpg');
-        createNewAudio($('#list').val());
+    $('#playlists').on('change', 'select',  function () {
+        $('#coverPic').attr('src', 'data/pictures/' + getSongCover($(this).val()) + '.jpg');
+        createNewAudio($(this).val());
     })
 });

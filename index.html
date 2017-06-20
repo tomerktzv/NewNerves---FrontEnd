@@ -13,17 +13,16 @@
     <link rel="stylesheet" href="includes/styles.css">
     <script src="includes/scripts.js"></script>
     <script src="includes/loginCheck.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Frijole|Permanent+Marker" rel="stylesheet">
 </head>
 <body id="index">
     <h1>New Nerves</h1>
     <img src="data/pictures/nocover.png" id="coverPic">
-    <select id="list">
-        <option disabled selected>SONG LIST</option>
-    </select>
-    <!--<button>CLICK</button>-->
+    <div id="playlists"></div>
+    <ul id="hashtags"></ul>
     <div id="length">Duration:</div>
     <div id="source">Source:</div>
-    <div id="status" style="color:red;">Status: Loading</div>
+    <div id="status">Status: Loading</div>
     <div id="buttons">
         <h2>Control Buttons</h2>
         <button id="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
@@ -32,19 +31,6 @@
         <button id="restart"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span></button>
         <h2>Playing Information</h2>
         <div id="currentTime">0</div>
-    </div>
-
-    <!--<div class="wrapper">-->
-        <!--<audio controls id="music">-->
-            <!--<source type="audio/mpeg" id="song1"/>-->
-            <!--Your browser does not support the audio element.-->
-        <!--</audio>-->
-        <!--<br>-->
-        <!--<audio controls="controls">-->
-            <!--<source src="../data/songs/101.I%20Want%20You%20So%20Hard%20(Boy's%20Bad%20News).mp3" type="audio/mpeg" id="song2" />-->
-            <!--&lt;!&ndash;<source src="../data/songs/100.Gotta%20Get%20Away.mp3" type="audio/mpeg" />&ndash;&gt;-->
-            <!--Your browser does not support the audio element-->
-        <!--</audio>-->
     </div>
 </body>
 </html>
