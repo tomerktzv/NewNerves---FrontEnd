@@ -3,6 +3,12 @@
  */
 $("document").ready(function() {
     var audioElement = document.createElement('audio');
+    var tempUserId = window.location.search.substring(1);
+    var userId = tempUserId.substring(tempUserId.indexOf('=') + 1, tempUserId.length);
+    console.log(userId);
+    // tempUserId.split('=');
+    // userId = tempUserId[1];
+    // var songsArr = [];
 
     function createNewAudio(songUrl) {
         audioElement.setAttribute('src', songUrl);
@@ -12,13 +18,13 @@ $("document").ready(function() {
             this.play();
         }, false);
 
-        audioElement.addEventListener("canplay",function(){
+        audioElement.addEventListener("canplay",function() {
             $("#length").text("Duration:" + audioElement.duration + " seconds");
             $("#source").text("Source:" + audioElement.src);
             // $("#status").text("Status: Ready to play").css("color","green");
         });
 
-        audioElement.addEventListener("timeupdate",function(){
+        audioElement.addEventListener("timeupdate", function() {
             $("#currentTime").text("Current second:" + audioElement.currentTime);
         });
 
@@ -44,61 +50,44 @@ $("document").ready(function() {
     }
 
     function getSongCover(str) {
-        // console.log(str);
-        var start = str.indexOf('songs/');
-        var end = str.indexOf('.mp3');
-        var newStr = str.substring(start+6, end);
-        console.log(newStr);
-        return newStr
-        // console.log(test);
+        // var start = str.indexOf('songs/');
+        // var end = str.indexOf('.mp3');
+        var newStr = str.substring(str.indexOf('songs/') + 6, str.indexOf('.mp3'));
+        // return newStr;
+        return (str.substring(str.indexOf('songs/') + 6, str.indexOf('.mp3')));
     }
 
-    // $('#song1').attr('src', '../data/songs/100.Gotta Get Away.mp3');
-    // $('#song1').load();
-    // console.log($('#song1').attr('src'));
-    $.getJSON('https://new-nerves.herokuapp.com/getAllSongs', function (data) {
+    function getSongs(arr) {
+        // console.log(arr);
+        // console.log(userId);
+        for (i = 0; i < arr.length; i++) {
+            // console.log(arr[i]);
+            $.getJSON('https://new-nerves.herokuapp.com/getSongByID/' + arr[i], function (data) {
+                $.each(data, function (key, value) {
+                    $('#list').append('<option value="data/songs/' + value.id + '.' + value.title + '.mp3">' + value.artist + ' - ' + value.title + '</option>');
+                });
+            });
+        }
+    }
+
+    $.getJSON('https://new-nerves.herokuapp.com/getMixesByUserId/' + userId, function (data) {
         $.each(data, function (key, value) {
-            $('#list').append('<option value="../data/songs/' + value.id + '.' + value.title + '.mp3">' + value.artist + ' - ' + value.title + '</option>');
-            // createNewAudio('../data/songs/' + value.id + '.' + value.title + '.mp3');
+            getSongs(value.songs);
+            // console.log(songsArr);
+            // songsArr.push(value.songs.val());
+            // for (i = 0; i < songsArr.length; i++)
+            //     console.log(songsArr[i]);
         });
     });
 
-    // $('button').on('click', function () {
-    //     console.log($('#list').val());
-    //     createNewAudio($('#list').val());
-    // })
+    // $.getJSON('https://new-nerves.herokuapp.com/getAllSongs', function (data) {
+    //     $.each(data, function (key, value) {
+    //         $('#list').append('<option value="data/songs/' + value.id + '.' + value.title + '.mp3">' + value.artist + ' - ' + value.title + '</option>');
+    //     });
+    // });
 
     $('#list').on('change', function () {
-        // console.log($('#list').val());
-        // getSongDetails($('#list').val());
-        $('#coverPic').attr('src', '../data/pictures/' + getSongCover($('#list').val()) + '.jpg');
-        // $('#coverPic').attr('src', '../data/pictures/100.The Black Keys.jpg');
+        $('#coverPic').attr('src', 'data/pictures/' + getSongCover($('#list').val()) + '.jpg');
         createNewAudio($('#list').val());
     })
 });
-
-
-
-
-
-
-// if (value.id === 100) {
-//     $('#test').append('<li>' + value.title + '</li>');
-//     $('#test').append('<li>' + value.artist + '</li>');
-//     $('#test').append('<li>' + value.id + '</li>');
-//     $('#test').append('<li>' + value.duration + '</li>');
-//     $('#test').append('<li>' + value.cover + '</li>');
-//     $('#test').append('<li>' + value.genre + '</li>');
-//     createNewAudio('../data/songs/' + value.id + '.' + value.title + '.mp3');
-//     // $('#song1').attr('src', '../data/songs/' + value.id + '.' + value.title + '.mp3');
-//     console.log('success');
-// }
-// else if (value.id == 101) {
-//     $('#test').append('<li>' + value.title + '</li>');
-//     $('#test').append('<li>' + value.artist + '</li>');
-//     $('#test').append('<li>' + value.id + '</li>');
-//     $('#test').append('<li>' + value.duration + '</li>');
-//     $('#test').append('<li>' + value.cover + '</li>');
-//     $('#test').append('<li>' + value.genre + '</li>');
-//     createNewAudio('../data/songs/' + value.id + '.' + value.title + '.mp3');
-// }
