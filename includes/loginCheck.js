@@ -3,8 +3,9 @@
  */
 (function () {
     var data = window.location.search.substring(1);
+    data.split('=');
     console.log(data);
-    if(data==""){
+    if(data[0]!="user_id"){
         window.location.href = "login.html?";
     }
 })();

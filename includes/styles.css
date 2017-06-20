@@ -60,3 +60,39 @@ button {
     border: 1px solid #ffffff;
     text-align: center;
 }
+
+#login_form{
+    padding: 5% 5%;
+    width:25%;
+    position: relative;
+    left:150px;
+    top:50px;
+    border:1px solid white;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.4);
+}
+
+#login_form h2{
+    position: absolute;
+    top:-9%;
+    left:0%;
+    color: lightcoral;
+}
+
+#login_form label{
+    display: block;
+    float: left;
+    width:250px;
+    margin-right: 5%;
+}
+#login_form input{
+    width:25%;
+}
+input[type=submit]{
+    margin:5% 40%;
+    width:50px;
+    height: 30px;
+    font-size: 105%;
+    border-radius: 5px;
+    display: block;
+}
