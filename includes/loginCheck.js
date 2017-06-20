@@ -5,7 +5,7 @@
     var data = window.location.search.substring(1);
     data.split('=');
     console.log(data);
-    if(data[0]!="user_id"){
+    if(!data[0].isEqual("user_id")){
         window.location.href = "login.html?";
     }
 })();
