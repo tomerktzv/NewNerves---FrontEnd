@@ -74,6 +74,20 @@ button {
 
 #coverPic {
     display: block;
+    border-radius: 50%;
+    animation: rot 5s infinite linear;
+}
+
+@keyframes rot {
+    from {
+        transform: rotate(0deg)
+        rotate(180deg);
+    }
+    to {
+        transform: rotate(180deg)
+        rotate(360deg);
+    }
+}
 }
 
 #buttons {
