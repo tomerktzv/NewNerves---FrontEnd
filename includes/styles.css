@@ -20,6 +20,12 @@ header, nav, main, footer, aside, section, article, a {
     border: 2px solid darkred;
 }
 
+body {
+    color: #ffffff;
+    background: url('../images/bg.jpg');
+    background-size: cover;
+}
+
 audio {
     border: 1px solid black;
     margin: auto;
@@ -31,3 +37,26 @@ p {
     color: #333333;
 }
 
+select {
+    color: #333333;
+    width: 500px;
+    font-size: 15px;
+}
+
+button > span {
+    color: #333333;
+}
+
+button {
+    width: 50px;
+}
+
+#coverPic {
+    display: block;
+}
+
+#buttons {
+    width: 300px;
+    border: 1px solid #ffffff;
+    text-align: center;
+}

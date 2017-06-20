@@ -3,30 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="images/NNLogo.jpg">
-    <title>test</title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>New Nerves</title>
     <script src="includes/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="includes/styles.css">
     <script src="includes/scripts.js"></script>
 </head>
-<body>
-<ul>
-    <li id="test">bla bla</li>
-</ul>
-<div class="wrapper">
-    <audio controls id="music">
-        <source src="../data/songs/100.Gotta%20Get%20Away.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <br>
-    <audio controls="controls">
-        <source src="../data/songs/101.I%20Want%20You%20So%20Hard%20(Boy's%20Bad%20News).mp3" type="audio/ogg" />
-        <!--<source src="../data/songs/100.Gotta%20Get%20Away.mp3" type="audio/mpeg" />-->
-        Your browser does not support the audio element
-    </audio>
-</div>
+<body id="index">
+    <h2>Song List</h2>
+    <img src="../data/pictures/load.gif" id="coverPic">
+    <select id="list">
+        <option disabled selected>SONG LIST</option>
+    </select>
+    <!--<button>CLICK</button>-->
+    <div id="length">Duration:</div>
+    <div id="source">Source:</div>
+    <div id="status" style="color:red;">Status: Loading</div>
+    <div id="buttons">
+        <h2>Control Buttons</h2>
+        <button id="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        <button id="pause"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>
+        <button id="stop"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></button>
+        <button id="restart"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span></button>
+        <h2>Playing Information</h2>
+        <div id="currentTime">0</div>
+    </div>
+
+    <!--<div class="wrapper">-->
+        <!--<audio controls id="music">-->
+            <!--<source type="audio/mpeg" id="song1"/>-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+        <!--<br>-->
+        <!--<audio controls="controls">-->
+            <!--<source src="../data/songs/101.I%20Want%20You%20So%20Hard%20(Boy's%20Bad%20News).mp3" type="audio/mpeg" id="song2" />-->
+            <!--&lt;!&ndash;<source src="../data/songs/100.Gotta%20Get%20Away.mp3" type="audio/mpeg" />&ndash;&gt;-->
+            <!--Your browser does not support the audio element-->
+        <!--</audio>-->
+    </div>
 </body>
 </html>
